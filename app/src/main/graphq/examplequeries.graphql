@@ -1,0 +1,51 @@
+query Items($limit: Int!) { // The name of the class that will contain a query from the file schema.json
+   customerItem(limit: $limit) { // The name of the query from the file schema.json
+      ...CustomerItemInfo // GraphQL fragment that is described below
+   }
+}
+query UserInfo {
+   currentCustomer {
+       ...User
+   }
+}
+mutation AddItem($source: String!) {
+    createItem(source: $source) {
+        ...CustomerItemInfo
+    }
+}
+fragment CustomerItemInfo on CustomerItem { // CustomerItem - type from the file schema.json. That means your fragment contains fields from this type object
+   id
+   brand
+   price
+   title
+}
+fragment User on Customer {
+   email
+   full_name
+   id
+}query Items($limit: Int!) { // The name of the class that will contain a query from the file schema.json
+    customerItem(limit: $limit) { // The name of the query from the file schema.json
+       ...CustomerItemInfo // GraphQL fragment that is described below
+    }
+ }
+ query UserInfo {
+    currentCustomer {
+        ...User
+    }
+ }
+ mutation AddItem($source: String!) {
+     createItem(source: $source) {
+         ...CustomerItemInfo
+     }
+ }
+ fragment CustomerItemInfo on CustomerItem { // CustomerItem - type from the file schema.json. That means your fragment contains fields from this type object
+    id
+    brand
+    price
+    title
+ }
+ fragment User on Customer {
+    email
+    full_name
+    id
+ }
